@@ -17,6 +17,8 @@ def tratar_data(data1,data2):
     return(data1,data2)
 
 def sla(data1,data2):#função do SLA
+    if data1>data2:
+        return 0
     data1,data2=tratar_data(data1,data2)#tratar a data com a função: objetivo dela é colocar a data dentro do horario comercial
     datas = pd.date_range(start=data1, end=data2, freq='d').to_series()#estou pegando todas as data que tem em diferença entre a data1 e data2(isso é um range)
     horas=0
@@ -25,8 +27,8 @@ def sla(data1,data2):#função do SLA
     else:
         # Selecionar apenas as datas de segunda a sexta-feira
         data_uteis=datas[datas.dt.weekday < 5]#dentro do range que criei quero tirar todas as datas sabado e domingo usando o weekday
-        if len(data_uteis)>=3:# se a quantidade de dias for maior que 2, ou seja, mais que dois dias de diferença mutiplica vezes 8 esses dias
-            horas=(len(data_uteis)-2)*8
+        if len(data_uteis)>=2:# se a quantidade de dias for maior que 1, ou seja, mais que um dias de diferença mutiplica vezes 8 esses dias
+            horas=(len(data_uteis)-1)*8
         #importante divisão precisamos calcular quantas horas gastamos no primeiro dia
         nova_data1 = data1.replace(hour=17, minute=30#fantoche para saber ate a ultima hora
 
