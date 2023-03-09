@@ -9,3 +9,5 @@ para usar a função com um DataFrame faça isso:
 
 df.apply(lambda row: sla(row['data1'], row['data2']) if not pd.isna(row['data2']) else None, axis=1)# isso passará por todas as linhas caso a data2 seja vaziou estou retornando null com o objetivo de caso voce esteja tentando ver um dataFrame com a data2 vazia pode acontecer caso ainda essa data não foi adicioanda por algum motivo
 
+para fazer um teste basico faça isso:
+sla(datetime(2020, 6, 15, 10, 8),datetime(2020, 6, 23, 12, 4))
